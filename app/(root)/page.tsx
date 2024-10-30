@@ -17,11 +17,14 @@ export default async function Home({
     <>
       <section className="pink_container">
         <h1 className="heading">
-          Pitch Your Post, <br /> Connect With Bloger
+          Pitch Your Post <br /> Connect with Bloggers & Rise in Virtual
+          Competitions
         </h1>
         <p className="sub-heading !max-w-3xl">
-          Submit Posts, Vote on Pitches, and Get Noticed in Virtual
-          Competitions.
+          Submit your blog posts, share ideas, and compete in an engaging online
+          community. Vote on pitches, connect with fellow bloggers, and gain
+          visibility in virtual competitions designed to help you get noticed
+          and expand your reach.
         </p>
         <SearchForm query={query} />
       </section>

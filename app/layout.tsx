@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
-//import "easymde/dist/easymde.min.css";
 
 const workSans = localFont({
   src: [
@@ -51,8 +50,8 @@ const workSans = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "YC Directory",
-  description: "Pitch, Vote and Grow with YC Directory",
+  title: "Blog Nextjs15 Sanity",
+  description: "Create blog with Nextjs15 & Sanity",
 };
 
 export default function RootLayout({
