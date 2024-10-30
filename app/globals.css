@@ -131,57 +131,57 @@
     @apply size-[50px] rounded-full bg-black flex justify-center items-center !important;
   }
 
-  /* startupcard */
-  .startup-card {
+  /* postcard */
+  .post-card {
     @apply bg-white border-[5px] border-black py-6 px-5 rounded-[22px] shadow-200 hover:border-primary transition-all duration-500 hover:shadow-300 hover:bg-primary-100;
   }
 
-  .startup-card_date {
+  .post-card_date {
     @apply font-medium text-[16px] bg-primary-100 px-4 py-2 rounded-full group-hover:bg-white-100;
   }
 
-  .startup-card_desc {
+  .post-card_desc {
     @apply font-normal text-[16px] line-clamp-2 my-3 text-black-100 break-all;
   }
 
-  .startup-card_img {
+  .post-card_img {
     @apply w-full h-[164px] rounded-[10px] object-cover;
   }
 
-  .startup-card_btn {
+  .post-card_btn {
     @apply rounded-full bg-black-200 font-medium text-[16px] text-white px-5 py-3 !important;
   }
 
-  .startup-card_skeleton {
+  .post-card_skeleton {
     @apply w-full h-96 rounded-[22px] bg-zinc-400;
   }
 
-  /* startupform */
-  .startup-form {
+  /* postform */
+  .post-form {
     @apply max-w-2xl mx-auto bg-white my-10 space-y-8 px-6;
   }
 
-  .startup-form_label {
+  .post-form_label {
     @apply font-bold text-[18px] text-black uppercase;
   }
 
-  .startup-form_input {
+  .post-form_input {
     @apply border-[3px] border-black px-5 py-7 text-[18px] text-black font-semibold rounded-full mt-3 placeholder:text-black-300 !important;
   }
 
-  .startup-form_textarea {
+  .post-form_textarea {
     @apply border-[3px] border-black p-5 text-[18px] text-black font-semibold rounded-[20px] mt-3 placeholder:text-black-300 !important;
   }
 
-  .startup-form_error {
+  .post-form_error {
     @apply text-red-500 mt-2 ml-5;
   }
 
-  .startup-form_editor {
+  .post-form_editor {
     @apply mt-3 border-[3px] border-black text-[18px] text-black font-semibold placeholder:text-black-300 !important;
   }
 
-  .startup-form_btn {
+  .post-form_btn {
     @apply bg-primary border-[4px] border-black rounded-full p-5 min-h-[70px] w-full font-bold text-[18px] !important;
   }
 

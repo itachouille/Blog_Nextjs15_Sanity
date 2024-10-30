@@ -20,9 +20,9 @@ const PostCard = ({ post }: { post: PostTypeCard }) => {
   } = post;
 
   return (
-    <li className="startup-card group">
+    <li className="post-card group">
       <div className="flex-between">
-        <p className="startup-card_date">{formatDate(_createdAt)}</p>
+        <p className="post-card_date">{formatDate(_createdAt)}</p>
         <div className="flex gap-1.5">
           <EyeIcon className="size-6 text-primary" />
           <span className="text-16-medium">{views}</span>
@@ -48,14 +48,14 @@ const PostCard = ({ post }: { post: PostTypeCard }) => {
         </Link>
       </div>
       <Link href={`/post/${_id}`}>
-        <p className="startup-card_desc">{description}</p>
-        <img src={image} alt="placeholder" className="startup-card_img" />
+        <p className="post-card_desc">{description}</p>
+        <img src={image} alt="placeholder" className="post-card_img" />
       </Link>
       <div className="flex-between gap-3 mt-5">
         <Link href={`/?query=${category?.toLowerCase()}`}>
           <p className="text-16-medium">{category}</p>
         </Link>
-        <Button className="startup-card_btn" asChild>
+        <Button className="post-card_btn" asChild>
           <Link href={`/post/${_id}`}>Details</Link>
         </Button>
       </div>
