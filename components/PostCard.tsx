@@ -1,9 +1,10 @@
-import { formatDate } from "@/lib/utils";
+import { cn, formatDate } from "@/lib/utils";
 import { EyeIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "./ui/button";
 import { Author, Post } from "@/sanity/types";
+import { Skeleton } from "./ui/skeleton";
 
 export type PostTypeCard = Omit<Post, "author"> & { author?: Author };
 
@@ -39,8 +40,8 @@ const PostCard = ({ post }: { post: PostTypeCard }) => {
         </div>
         <Link href={`user/${author?._id}`}>
           <Image
-            src="https://placeholder.co/48x48"
-            alt="placeholder"
+            src={author?.image}
+            alt={author?.name}
             width={48}
             height={48}
             className="rounded-full"
@@ -49,7 +50,7 @@ const PostCard = ({ post }: { post: PostTypeCard }) => {
       </div>
       <Link href={`/post/${_id}`}>
         <p className="post-card_desc">{description}</p>
-        <img src={image} alt="placeholder" className="post-card_img" />
+        <img src={image} alt="post image" className="post-card_img" />
       </Link>
       <div className="flex-between gap-3 mt-5">
         <Link href={`/?query=${category?.toLowerCase()}`}>
@@ -64,3 +65,13 @@ const PostCard = ({ post }: { post: PostTypeCard }) => {
 };
 
 export default PostCard;
+
+export const PostCardSkeleton = () => (
+  <>
+    {[0, 1, 2, 3, 4].map((index: number) => (
+      <li key={cn("skeleton", index)}>
+        <Skeleton className="post-card_skeleton" />
+      </li>
+    ))}
+  </>
+);
