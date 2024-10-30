@@ -5,7 +5,7 @@ import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
 import MDEditor from "@uiw/react-md-editor";
 
-const StartupForm = () => {
+const PostForm = () => {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [pitch, setPitch] = useState("");
 
@@ -84,4 +84,4 @@ const StartupForm = () => {
   );
 };
 
-export default StartupForm;
+export default PostForm;

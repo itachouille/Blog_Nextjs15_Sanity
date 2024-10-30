@@ -1,6 +1,5 @@
 import { formatDate } from "@/lib/utils";
 import { client } from "@/sanity/lib/client";
-import { STARTUP_BY_ID_QUERY } from "@/sanity/lib/queries";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -8,19 +7,20 @@ import markdownit from "markdown-it";
 import { Suspense } from "react";
 import { Skeleton } from "@/components/ui/skeleton";
 import View from "@/components/View";
+import { POST_BY_ID_QUERY } from "@/sanity/lib/queries";
 
 export const expirimental_ppr = true;
 
 const md = markdownit();
 
-export default async function StartupPage({
+export default async function PostPage({
   params,
 }: {
   params: Promise<{ id: string }>;
 }) {
   const id = (await params).id;
 
-  const post = await client.fetch(STARTUP_BY_ID_QUERY, { id });
+  const post = await client.fetch(POST_BY_ID_QUERY, { id });
 
   if (!post) return notFound();
 
