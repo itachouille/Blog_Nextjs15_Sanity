@@ -40,7 +40,7 @@ const Navbar = async () => {
                     src={session.user.image || ""}
                     alt={session.user.name || ""}
                   />
-                  <AvatarFallback>You</AvatarFallback>
+                  <AvatarFallback className="border">You</AvatarFallback>
                 </Avatar>
               </Link>
             </>

@@ -25,7 +25,7 @@ const PostCard = ({ post }: { post: PostTypeCard }) => {
       <div className="flex-between">
         <p className="post-card_date">{formatDate(_createdAt)}</p>
         <div className="flex gap-1.5">
-          <EyeIcon className="size-6 text-primary" />
+          <EyeIcon className="size-6 text-primary group-hover:text-black" />
           <span className="text-16-medium">{views}</span>
         </div>
       </div>

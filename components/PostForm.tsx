@@ -159,7 +159,7 @@ const PostForm = () => {
       </div>
       <Button
         type="submit"
-        className="post-form_btn text-white"
+        className="post-form_btn text-black"
         disabled={isPending}
       >
         {isPending ? "Submitting ..." : "Submit"}

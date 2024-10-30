@@ -7,7 +7,8 @@ import markdownit from "markdown-it";
 import { Suspense } from "react";
 import { Skeleton } from "@/components/ui/skeleton";
 import View from "@/components/View";
-import { POST_BY_ID_QUERY } from "@/sanity/lib/queries";
+import { PLAYLIST_BY_SLUG_QUERY, POST_BY_ID_QUERY } from "@/sanity/lib/queries";
+import PostCard, { PostTypeCard } from "@/components/PostCard";
 
 export const expirimental_ppr = true;
 
@@ -20,7 +21,12 @@ export default async function PostPage({
 }) {
   const id = (await params).id;
 
-  const post = await client.fetch(POST_BY_ID_QUERY, { id });
+  const [post, { select: editorPosts }] = await Promise.all([
+    client.fetch(POST_BY_ID_QUERY, { id }),
+    client.fetch(PLAYLIST_BY_SLUG_QUERY, {
+      slug: "best-recipes",
+    }),
+  ]);
 
   if (!post) return notFound();
 
@@ -28,7 +34,7 @@ export default async function PostPage({
 
   return (
     <>
-      <section className="pink_container !min-h-[230px]">
+      <section className="green_container !min-h-[230px]">
         <p className="tag">{formatDate(post._createdAt)}</p>
         <h1 className="heading">{post.title}</h1>
         <p className="sub-heading !max-w-5xl">{post.description}</p>
@@ -78,7 +84,16 @@ export default async function PostPage({
 
         <hr className="divider" />
 
-        {/* TODO : EDITOR SELECTED STARTUPS */}
+        {editorPosts.lenght > 0 && (
+          <div className="max-w-4xl mx-auto">
+            <p className="text-30-semibold">Best Recipes</p>
+            <ul className="mt-7 card_grid-sm">
+              {editorPosts.map((post: PostTypeCard, index: number) => (
+                <PostCard key={index} post={post} />
+              ))}
+            </ul>
+          </div>
+        )}
       </section>
 
       <Suspense fallback={<Skeleton className="view_skeleton" />}>

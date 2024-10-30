@@ -15,7 +15,7 @@ export default async function Home({
 
   return (
     <>
-      <section className="pink_container">
+      <section className="green_container">
         <h1 className="heading">
           Pitch Your Post <br /> Connect with Bloggers & Rise in Virtual
           Competitions

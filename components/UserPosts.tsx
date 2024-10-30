@@ -9,8 +9,8 @@ const UserPosts = async ({ id }: { id: string }) => {
   return (
     <>
       {posts.length > 0 ? (
-        posts.map((post: PostTypeCard) => (
-          <PostCard key={post._id} post={post} />
+        posts.map((post: PostTypeCard, index: number) => (
+          <PostCard key={index} post={post} />
         ))
       ) : (
         <p className="no-result">No posts yet</p>
