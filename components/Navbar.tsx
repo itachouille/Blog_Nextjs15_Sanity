@@ -1,7 +1,7 @@
 import { signIn, signOut, auth } from "@/auth";
 import Link from "next/link";
 import Logo from "./Logo";
-import { BadgePlus, LogOut } from "lucide-react";
+import { CirclePlus, LogOut } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 const Navbar = async () => {
@@ -19,10 +19,11 @@ const Navbar = async () => {
             <>
               <Link href="/post/create">
                 <span className="max-sm:hidden">Create</span>
-                <BadgePlus className="size-6 sm:hidden" />
+                <CirclePlus className="size-7 sm:hidden" />
               </Link>
 
               <form
+                className="flex"
                 action={async () => {
                   "use server";
                   await signOut({ redirectTo: "/" });
@@ -30,7 +31,7 @@ const Navbar = async () => {
               >
                 <button type="submit">
                   <span className="max-sm:hidden">Logout</span>
-                  <LogOut className="size-6 sm:hidden text-red-500" />
+                  <LogOut className="size-7 sm:hidden text-red-500" />
                 </button>
               </form>
 
