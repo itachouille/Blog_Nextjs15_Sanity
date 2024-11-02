@@ -16,6 +16,8 @@ import {
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
 import { DotsHorizontalIcon } from "@radix-ui/react-icons";
+import { auth } from "@/auth";
+
 export type PostTypeCard = Omit<Post, "author"> & { author?: Author };
 
 const PostCard = async ({ post }: { post: PostTypeCard }) => {
@@ -30,6 +32,8 @@ const PostCard = async ({ post }: { post: PostTypeCard }) => {
     description,
   } = post;
 
+  const session = await auth();
+
   return (
     <li className="post-card group">
       <div className="flex-between">
@@ -39,39 +43,40 @@ const PostCard = async ({ post }: { post: PostTypeCard }) => {
             <EyeIcon className="size-6 text-primary group-hover:text-black" />
             <span className="text-16-medium">{views}</span>
           </div>
-
-          <Dialog>
-            <AlertDialog>
-              <DropdownMenu>
-                <DropdownMenuTrigger
-                  asChild
-                  className="bg-primary-100 group-hover:bg-white-100"
-                >
-                  <Button variant="outline" className="size-8 p-0">
-                    <div className="sr-only">Action Menu</div>
-                    <DotsHorizontalIcon className="size-4" />
-                  </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent className="bg-white-100 min-w-10">
-                  <DropdownMenuItem asChild>
-                    <Link
-                      className="cursor-pointer hover:bg-primary-100"
-                      href={`/post/${_id}/edit`}
-                    >
-                      Edit
-                    </Link>
-                  </DropdownMenuItem>
-                  <DropdownMenuSeparator />
-                  <AlertDialogTrigger asChild>
-                    <DropdownMenuItem className="cursor-pointer hover:bg-red-400">
-                      Delete
+          {session != null && session.id === author?._id ? (
+            <Dialog>
+              <AlertDialog>
+                <DropdownMenu>
+                  <DropdownMenuTrigger
+                    asChild
+                    className="bg-primary-100 group-hover:bg-white-100"
+                  >
+                    <Button variant="outline" className="size-8 p-0">
+                      <div className="sr-only">Action Menu</div>
+                      <DotsHorizontalIcon className="size-4" />
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent className="bg-white-100 min-w-10">
+                    <DropdownMenuItem asChild>
+                      <Link
+                        className="cursor-pointer hover:bg-primary-100"
+                        href={`/post/${_id}/edit`}
+                      >
+                        Edit
+                      </Link>
                     </DropdownMenuItem>
-                  </AlertDialogTrigger>
-                </DropdownMenuContent>
-              </DropdownMenu>
-              <DeletePostAlertDialog id={_id} />
-            </AlertDialog>
-          </Dialog>
+                    <DropdownMenuSeparator />
+                    <AlertDialogTrigger asChild>
+                      <DropdownMenuItem className="cursor-pointer hover:bg-red-400">
+                        Delete
+                      </DropdownMenuItem>
+                    </AlertDialogTrigger>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+                <DeletePostAlertDialog id={_id} />
+              </AlertDialog>
+            </Dialog>
+          ) : null}
         </div>
       </div>
       <div className="flex-between mt-5 gap-5">
